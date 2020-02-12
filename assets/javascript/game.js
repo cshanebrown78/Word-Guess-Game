@@ -7,6 +7,7 @@ var underScore = [];
 var miscWord = "";
 var wins = 0;
 var guessRemaining = 10;
+var totalChances = 10;
 var guessCorrect = 0;
 var wordLetters = [];
 var correctLetter = [];
@@ -30,7 +31,9 @@ function gameStart() {
     miscWord = randoWord[Math.floor(Math.random()*randoWord.length)];
     console.log(miscWord);
     wordLetters = miscWord.split('');
-    underscore = [] ;
+    underScore = [] ;
+    letterGuessed = [];
+    
 
     for (i = 0; i < miscWord.length; i++) {
         underScore.push("_");
@@ -48,45 +51,40 @@ gameStart();
 
    document.onkeyup = function(event) {
 
-    for(var j = 0; j < 26; j++) {
-        if((event.key === correctInputs[j]) && (event.key !== letterGuessed[j])) {
+     for(var j = 0; j < correctInputs.length; j++) {
+        // if((event.key === correctInputs[j]) && (event.key !== letterGuessed[j])) {
+        if ((event.key === correctInputs[j])) {
             userChoice = event.key.toLowerCase();
+            correctInputs.splice(j, 1);
             // console.log(userChoice);
             letterGuessed[j] = userChoice;
-
             document.getElementById('usedLetters').innerHTML = letterGuessed.join(' ');
-            document.getElementById('guessesRemaining').innerHTML = guessRemaining;
-        }     
+
+            guessSort(userChoice);
+            winLose();
+        }   
+    }     
     
-    }
-        
-
-    guessSort(userChoice);
-
-   }    
+}
+    
 
 function guessSort () {
 
     if (miscWord.indexOf(userChoice) > -1) {
-        for (var i = 0; i < miscWord.length;i++) {
+            for (var i = 0; i < miscWord.length;i++) {
             if (wordLetters[i] === userChoice) {
-                console.log("this worked");
+                //console.log("this worked");
+                correctLetter++
                 underScore.splice(i,1,userChoice);
                 document.getElementById('currentWord').innerHTML = underScore.join(' ');
             } 
         }   
-    }
-        else {
+    } else {
             incorrectLetter.push(userChoice);
-            guessRemaining--;
-            console.log(guessRemaining);
+            guessRemaining--
+            // console.log(guessRemaining);
             document.getElementById('guessesRemaining').innerHTML = guessRemaining;
         }
-
-        
-        
-
-    
 }
 
 
@@ -96,11 +94,27 @@ function gameReset() {
     console.log(miscWord);
     wordLetters = miscWord.split('');
 
-    underscore = [] ;
+    underScore = [] ;
     guessRemaining = 10;
     guessCorrect = 0;
     wordLetters = [];
+    letterGuessed = [];
 
     gameStart ();
+
+}
+
+
+function winLose() {
+    if (miscWord.length === correctLetter) {
+        wins++
+        document.getElementById("winsCounter").innerHTML = wins;
+        alert("Winner winner chicken dinner");
+        gameReset();
+
+} else if (guessRemaining === 0) {
+        alert("You Choked");
+        gameReset();
+}
 
 }
