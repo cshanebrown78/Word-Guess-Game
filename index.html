@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word Guess</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <!-- <script type="text/javascript" src="assets/javascript/game.js"></script> -->
+    
 </head>
 <body>
     <Header>
@@ -15,15 +16,27 @@
     <div class="wrapper">
         <div class="container">
             <div id="game">
-                <h3>Guess a letter to start</h3>
+                <div id = "messageBoard"></div>
+                <div id = "hangmanPic"></div>
+                <div id = "instructions">
+                    <h3>Guess a letter to start</h3>
+                </div>
+                <div id = "wordDisplay">
                 <h3>Current Word</h3>
                 <p id = "currentWord"></p>
+                </div>
+                <div id = lettersUsed>
                 <h3>Letters Guessed</h3>
                 <p id = "usedLetters"></p>
+                </div>
+                <div id = "lives">
                 <h3>Guesses Remaining</h3>
                 <p  id = "guessesRemaining"></p>
+                </div>
+                <div id = "wins">
                 <h3>Wins</h3>
                 <p id = "winsCounter"></p>
+                </div>
             </div>
         </div>
     </div>
