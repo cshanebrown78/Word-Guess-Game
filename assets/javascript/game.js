@@ -66,6 +66,7 @@ function gameStart() {
             // console.log(userChoice);
             guessSort(userChoice);
             document.getElementById('usedLetters').innerHTML = incorrectLetter.join(' ');
+            document.getElementById("messageBoard").innerHTML = "";
             // This adds a small delay so the final letter or guess show on screen
             var myTimer = setInterval(winLose, 1000);
             
@@ -123,6 +124,7 @@ function guessSort () {
                 document.getElementById("hangmanPic").src = "assets/images/Hangman10.png";
             }
 
+            // displays guess remaining
             document.getElementById('guessesRemaining').innerHTML = guessRemaining;
         }
 }
@@ -140,6 +142,7 @@ function gameReset() {
     userChoice = [];
     correctLetter = [];
     incorrectLetter = [];
+    
         
     for (var k = 0; k < randomWord.length; k++) {
         if (wordsUsed === randomWord[k]) {
@@ -150,8 +153,7 @@ function gameReset() {
 
     }
 
-    // document.getElementById('usedLetters').innerHTML = incorrectLetter.join(' ');
-
+    
     gameStart ();
 
 }
@@ -160,14 +162,16 @@ function gameReset() {
 
 function winLose() {
     if (miscWord.length === correctLetter) {
-        wins++
+        wins++;
         document.getElementById("winsCounter").innerHTML = wins;
-        alert("Winner winner chicken dinner");
+        document.getElementById("messageBoard").innerHTML = "Winner Winner Chicken Dinner!";
+        // alert("Winner winner chicken dinner");
         gameReset();
 
 } else if (guessRemaining === 0) {
         document.getElementById("guessesRemaining").innerHTML = guessRemaining;
-        alert("You Choked");
+        document.getElementById("messageBoard").innerHTML = "You Choked";
+        // alert("You Choked");
         gameReset();
 }
 

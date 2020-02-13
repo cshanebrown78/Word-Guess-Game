@@ -2,9 +2,29 @@
     box-sizing: border-box;
 }
 
+html, body {
+    background-image: url("../images/header.png");
+    /* background: #082470; */
+    color: white;
+}
+
+body p {
+    font-size: 24px;
+}
+
 header {
     text-align: center;
+    background-image: url("../images/header.png");
+    padding: 20px;
+    
+    ;
 }
+
+.logo h1 {
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    font-style: "Comic Sans MS";
+    font-size: 40px;
 
 img {
     height: 100%;
@@ -14,10 +34,14 @@ img {
 
 .col-12-lg {
     text-align: center;
+    
 }
 
 .col-6-lg {
     float: center;
     padding-right: 30;
 }
+
+
+
 
