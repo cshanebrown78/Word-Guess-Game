@@ -48,7 +48,9 @@ function gameStart() {
     document.getElementById('currentWord').innerHTML = underScore.join(' ');
     document.getElementById('guessesRemaining').innerHTML = guessRemaining;
     document.getElementById('usedLetters').innerHTML = incorrectLetter.join(' ');
-    
+    document.getElementById("hangmanPic").src = "assets/images/Hangman0.png";
+    document.getElementById("winsCounter").innerHTML = wins;
+    document.getElementById('usedLetters').innerHTML = "--";
 
 }
 
@@ -88,6 +90,39 @@ function guessSort () {
             incorrectLetter.push(userChoice);
             guessRemaining--
             // console.log(guessRemaining);
+
+            // pulls hangman images based on number of guesses remaining
+            if (guessRemaining === 9) {
+                document.getElementById("hangmanPic").src = "assets/images/Hangman1.png";
+            }
+            else if (guessRemaining === 8) {
+                document.getElementById("hangmanPic").src = "assets/images/Hangman2.png";
+            }
+            else if (guessRemaining === 7) {
+                document.getElementById("hangmanPic").src = "assets/images/Hangman3.png";
+            }
+            else if (guessRemaining === 6) {
+                document.getElementById("hangmanPic").src = "assets/images/Hangman4.png";
+            }
+            else if (guessRemaining === 5) {
+                document.getElementById("hangmanPic").src = "assets/images/Hangman5.png";
+            }
+            else if (guessRemaining === 4) {
+                document.getElementById("hangmanPic").src = "assets/images/Hangman6.png";
+            }
+            else if (guessRemaining === 3) {
+                document.getElementById("hangmanPic").src = "assets/images/Hangman7.png";
+            }
+            else if (guessRemaining === 2) {
+                document.getElementById("hangmanPic").src = "assets/images/Hangman8.png";
+            }
+            else if (guessRemaining === 1) {
+                document.getElementById("hangmanPic").src = "assets/images/Hangman9.png";
+            }
+            else if (guessRemaining === 0) {
+                document.getElementById("hangmanPic").src = "assets/images/Hangman10.png";
+            }
+
             document.getElementById('guessesRemaining').innerHTML = guessRemaining;
         }
 }

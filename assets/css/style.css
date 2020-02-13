@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+header {
+    text-align: center;
+}
+
+img {
+    height: 100%;
+    width: 60%;
+    float: right;
+}
+
+.col-12-lg {
+    text-align: center;
+}
+
+.col-6-lg {
+    float: center;
+    padding-right: 30;
+}
+

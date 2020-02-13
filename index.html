@@ -10,33 +10,54 @@
 </head>
 <body>
     <Header>
-        <h1>Word Guess</h1>
+        <div class="logo">
+            <h1>Aviation Hangman</h1>
+        </div>
     </Header>
 
     <div class="wrapper">
         <div class="container">
             <div id="game">
-                <div id = "messageBoard"></div>
-                <div id = "hangmanPic"></div>
-                <div id = "instructions">
-                    <h3>Guess a letter to start</h3>
+                <div class = "row">
+                    <div class = "col-lg-12">
+                        <p id = "messageBoard"></p>
+                    </div>
                 </div>
-                <div id = "wordDisplay">
-                <h3>Current Word</h3>
-                <p id = "currentWord"></p>
-                </div>
-                <div id = lettersUsed>
-                <h3>Letters Guessed</h3>
-                <p id = "usedLetters"></p>
-                </div>
-                <div id = "lives">
-                <h3>Guesses Remaining</h3>
-                <p  id = "guessesRemaining"></p>
-                </div>
-                <div id = "wins">
-                <h3>Wins</h3>
-                <p id = "winsCounter"></p>
-                </div>
+                <br>    
+                    <div class = "row">
+                        <div class = "col-lg-6">    
+                            <img id = "hangmanPic" src=""/>
+                        </div>
+                        <div class = "col-lg-6">
+                            <h2 id = "instructions">Guess a letter to start</h2><br>
+                            <div class = "row">
+                                <div class ="col-lg-12">
+                                    <h3>Current Word</h3>
+                                    <p id = "currentWord"></p>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class = "col-lg-12">
+                                    <h3>Letters Guessed</h3>
+                                    <p id = "usedLetters"></p>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class = "col-lg-12">
+                                    <h3>Guesses Remaining</h3>
+                                    <p  id = "guessesRemaining"></p>
+                                </div>
+                            </div>        
+                            <div class = "row"> 
+                                <div class = "col-lg-12">
+                                    <h3>Wins</h3>
+                                    <p id = "winsCounter"></p>
+                                </div>
+                            </div>
+                        </div>
+                            
+                    </div>        
+                </div>    
             </div>
         </div>
     </div>
