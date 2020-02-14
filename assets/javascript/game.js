@@ -1,5 +1,6 @@
 // Global
 
+
 var underScore = [];
 var miscWord = "";
 var wordsUsed = [];
@@ -45,6 +46,7 @@ function gameStart() {
         // document.getElementById('currentWord').innerHTML = underScore;
     }
 
+    // Preps the website for the start of the game
     document.getElementById('currentWord').innerHTML = underScore.join(' ');
     document.getElementById('guessesRemaining').innerHTML = guessRemaining;
     document.getElementById('usedLetters').innerHTML = incorrectLetter.join(' ');
@@ -62,29 +64,35 @@ function gameStart() {
         
         if ((event.key === correctInputs[j])) {
             userChoice = event.key.toLowerCase();
+            //removes letters from correctInputs so they can't repeat
             correctInputs.splice(j, 1);
             // console.log(userChoice);
-            guessSort(userChoice);
+            guessSort();
             document.getElementById('usedLetters').innerHTML = incorrectLetter.join(' ');
-            document.getElementById("messageBoard").innerHTML = "";
+            document.getElementById("messageBoard").innerHTML = "Don't Choke";
             // This adds a small delay so the final letter or guess show on screen
-            var myTimer = setInterval(winLose, 1000);
+            // var myTimer = setInterval(winLose, 1000);
+            // winLose();
             
         }   
-    }     
+    }
+    
+    winLose();       
 }
     
-
+// sorts the user guess into appropriate area
 function guessSort () {
 
     if (miscWord.indexOf(userChoice) > -1) {
-            for (var i = 0; i < miscWord.length;i++) {
+        for (var i = 0; i < miscWord.length; i++) {
             if (wordLetters[i] === userChoice) {
                 //console.log("this worked");
-                underScore.splice(i,1,userChoice);
-                
+                underScore[i] = userChoice;
+                console.log(underScore[i]);
                 document.getElementById('currentWord').innerHTML = underScore.join(' ');
-                correctLetter++
+                console.log(underScore.join(' '));
+                correctLetter++;
+                
             } 
         }   
     } else {
@@ -126,20 +134,23 @@ function guessSort () {
 
             // displays guess remaining
             document.getElementById('guessesRemaining').innerHTML = guessRemaining;
+            
+            
         }
+        
 }
 
 // Resets game after win or loss
 
 function gameReset() {
 
-    underScore = [] ;
+    // underScore = [] ;
     guessRemaining = 10;
     guessCorrect = 0;
     wordLetters = [];
     letterGuessed = [];
     correctInputs = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    userChoice = [];
+    userChoice = 0;
     correctLetter = [];
     incorrectLetter = [];
     
@@ -161,19 +172,28 @@ function gameReset() {
 // Determins when a win or loss has happened
 
 function winLose() {
-    if (miscWord.length === correctLetter) {
+    if (miscWord === underScore.join('')) {
+        console.log(underScore.join(' '));
         wins++;
         document.getElementById("winsCounter").innerHTML = wins;
         document.getElementById("messageBoard").innerHTML = "Winner Winner Chicken Dinner!";
         // alert("Winner winner chicken dinner");
-        gameReset();
-
-} else if (guessRemaining === 0) {
-        document.getElementById("guessesRemaining").innerHTML = guessRemaining;
-        document.getElementById("messageBoard").innerHTML = "You Choked";
-        // alert("You Choked");
-        gameReset();
-}
+        var confirmNewGame = confirm("Do you want a new word?");
+            if (confirmNewGame) {
+                gameReset();
+            }    
+            
+    } else if (guessRemaining === 0) {
+            console.log(guessRemaining);
+            document.getElementById("guessesRemaining").innerHTML = guessRemaining;
+            document.getElementById("messageBoard").innerHTML = "You Choked";
+            document.getElementById("hangmanPic").src = "assets/images/Hangman10.png";
+            // alert("You Choked");
+            var confirmNewGame = confirm("Do you want a new word?");
+                if (confirmNewGame) {
+                    gameReset();
+                } 
+    }
 
 }
 

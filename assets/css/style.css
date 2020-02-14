@@ -6,6 +6,7 @@ html, body {
     background-image: url("../images/header.png");
     /* background: #082470; */
     color: white;
+    font-weight: 700;
 }
 
 body p {
