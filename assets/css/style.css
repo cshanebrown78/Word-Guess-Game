@@ -15,10 +15,16 @@ body p {
 
 header {
     text-align: center;
-    background-image: url("../images/header.png");
-    padding: 20px;
+    /* background-image: url("../images/title1.png"); */
+    /* padding: 20px; */
+    background: black;
+    
     
     ;
+}
+
+header img {
+    float: center;
 }
 
 .logo h1 {

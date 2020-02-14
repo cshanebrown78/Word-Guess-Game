@@ -178,21 +178,25 @@ function winLose() {
         document.getElementById("winsCounter").innerHTML = wins;
         document.getElementById("messageBoard").innerHTML = "Winner Winner Chicken Dinner!";
         // alert("Winner winner chicken dinner");
-        var confirmNewGame = confirm("Do you want a new word?");
-            if (confirmNewGame) {
-                gameReset();
-            }    
-            
-    } else if (guessRemaining === 0) {
-            console.log(guessRemaining);
-            document.getElementById("guessesRemaining").innerHTML = guessRemaining;
-            document.getElementById("messageBoard").innerHTML = "You Choked";
-            document.getElementById("hangmanPic").src = "assets/images/Hangman10.png";
-            // alert("You Choked");
-            var confirmNewGame = confirm("Do you want a new word?");
+        setTimeout(function() {
+            var confirmNewGame = confirm("Ready for next word?");
                 if (confirmNewGame) {
                     gameReset();
-                } 
+                }    
+            },1000);    
+
+    } else if (guessRemaining === 0) {
+        console.log(guessRemaining);
+        document.getElementById("guessesRemaining").innerHTML = guessRemaining;
+        document.getElementById("messageBoard").innerHTML = "You Choked";
+        document.getElementById("hangmanPic").src = "assets/images/Hangman10.png";
+            // alert("You Choked");
+        setTimeout(function() {    
+            var confirmNewGame = confirm("Ready for next word?");
+                if (confirmNewGame) {
+                    gameReset();
+                }
+        },1000);         
     }
 
 }
