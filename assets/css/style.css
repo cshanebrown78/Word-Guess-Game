@@ -3,10 +3,20 @@
 }
 
 html, body {
-    background-image: url("../images/header.png");
+    background-image: url("../images/Header.png");
     /* background: #082470; */
     color: white;
     font-weight: 700;
+    font-style: italic;
+}
+
+html, body #instructions {
+    color: #fd950d
+}
+
+body h3{
+    color: white;
+    text-decoration: underline;
 }
 
 body p {
@@ -16,9 +26,8 @@ body p {
 header {
     text-align: center;
     /* background-image: url("../images/title1.png"); */
-    /* padding: 20px; */
+    padding-bottom: 10px;
     background: black;
-    
     
     ;
 }
@@ -49,6 +58,8 @@ img {
     padding-right: 30;
 }
 
-
+h2 #messageBoard {
+    padding-top: 10px;
+}
 
 

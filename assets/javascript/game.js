@@ -1,13 +1,15 @@
 // Global
 
-
+// variable for underscore display
 var underScore = [];
+// variable where the random word gets stored
 var miscWord = "";
+// variable that stores words used so that they aren't reused
 var wordsUsed = [];
 var wins = 0;
 var guessRemaining = 10;
-var totalChances = 10;
-var guessCorrect = 0;
+// var totalChances = 10;
+// var guessCorrect = 0;
 var wordLetters = [];
 var correctLetter = [];
 var incorrectLetter = [];
@@ -23,7 +25,7 @@ var randomWord = ["jet","airplane","aviation","pilot","radar","propeller","rudde
 
 function gameStart() {
 
-    // resets everything 
+    // resets everything when all words are used
     if (randomWord.length === 0){
         alert("Game over.  No more words");
         randomWord = ["jet","airplane","aviation","pilot","radar","propeller","rudder","flight","cockpit","runway","helicopter"];
@@ -34,13 +36,14 @@ function gameStart() {
     miscWord = randomWord[Math.floor(Math.random()*randomWord.length)];
     // Stores picked words so that they aren't repeated
     wordsUsed = miscWord;
-    console.log(miscWord);
+    // console.log(miscWord);
     wordLetters = miscWord.split('');
+    // makes sure all are set to game start 
     underScore = [] ;
     letterGuessed = [];
     incorrectLetter = [];
     correctInputs = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-
+    // Sets the underScore variable so that it has the correct number of dashes
     for (i = 0; i < miscWord.length; i++) {
         underScore.push("_");
         // document.getElementById('currentWord').innerHTML = underScore;
@@ -70,9 +73,7 @@ function gameStart() {
             guessSort();
             document.getElementById('usedLetters').innerHTML = incorrectLetter.join(' ');
             document.getElementById("messageBoard").innerHTML = "Don't Choke";
-            // This adds a small delay so the final letter or guess show on screen
-            // var myTimer = setInterval(winLose, 1000);
-            // winLose();
+            
             
         }   
     }
@@ -82,20 +83,21 @@ function gameStart() {
     
 // sorts the user guess into appropriate area
 function guessSort () {
-
+    // If the letter chosen is in the word this inserts it
     if (miscWord.indexOf(userChoice) > -1) {
         for (var i = 0; i < miscWord.length; i++) {
             if (wordLetters[i] === userChoice) {
                 //console.log("this worked");
                 underScore[i] = userChoice;
-                console.log(underScore[i]);
+                // console.log(underScore[i]);
                 document.getElementById('currentWord').innerHTML = underScore.join(' ');
-                console.log(underScore.join(' '));
+                // console.log(underScore.join(' '));
                 correctLetter++;
                 
             } 
         }   
     } else {
+            // incorrect letters are taken care of here
             incorrectLetter.push(userChoice);
             guessRemaining--
             // console.log(guessRemaining);
@@ -146,7 +148,7 @@ function gameReset() {
 
     // underScore = [] ;
     guessRemaining = 10;
-    guessCorrect = 0;
+    // guessCorrect = 0;
     wordLetters = [];
     letterGuessed = [];
     correctInputs = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -154,12 +156,12 @@ function gameReset() {
     correctLetter = [];
     incorrectLetter = [];
     
-        
+    // this removes a used word from randomWord possibilities 
     for (var k = 0; k < randomWord.length; k++) {
         if (wordsUsed === randomWord[k]) {
-            console.log(wordsUsed);
+            // console.log(wordsUsed);
             randomWord.splice(k,1);
-            console.log (randomWord);
+            // console.log (randomWord);
         }
 
     }
@@ -169,7 +171,7 @@ function gameReset() {
 
 }
 
-// Determins when a win or loss has happened
+// Determines when a win or loss has happened
 
 function winLose() {
     if (miscWord === underScore.join('')) {
@@ -178,6 +180,7 @@ function winLose() {
         document.getElementById("winsCounter").innerHTML = wins;
         document.getElementById("messageBoard").innerHTML = "Winner Winner Chicken Dinner!";
         // alert("Winner winner chicken dinner");
+        // timeout had to be used because confirm over rides DOM manipulation
         setTimeout(function() {
             var confirmNewGame = confirm("Ready for next word?");
                 if (confirmNewGame) {
@@ -191,6 +194,7 @@ function winLose() {
         document.getElementById("messageBoard").innerHTML = "You Choked";
         document.getElementById("hangmanPic").src = "assets/images/Hangman10.png";
             // alert("You Choked");
+        // timeout had to be used because confirm over rides DOM manipulation
         setTimeout(function() {    
             var confirmNewGame = confirm("Ready for next word?");
                 if (confirmNewGame) {
