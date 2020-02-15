@@ -175,12 +175,13 @@ function gameReset() {
 
 function winLose() {
     if (miscWord === underScore.join('')) {
-        console.log(underScore.join(' '));
+        // console.log(underScore.join(' '));
         wins++;
         document.getElementById("winsCounter").innerHTML = wins;
         document.getElementById("messageBoard").innerHTML = "Winner Winner Chicken Dinner!";
         // alert("Winner winner chicken dinner");
         // timeout had to be used because confirm over rides DOM manipulation
+        playAudio();
         setTimeout(function() {
             var confirmNewGame = confirm("Ready for next word?");
                 if (confirmNewGame) {
@@ -204,5 +205,11 @@ function winLose() {
     }
 
 }
+
+
+var soundPlay = document.getElementById("winAudio");
+    function playAudio() {
+        soundPlay.play();
+    }
 
 gameStart ();
